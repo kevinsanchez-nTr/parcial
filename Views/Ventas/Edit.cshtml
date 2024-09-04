@@ -1,0 +1,47 @@
+﻿@model parcial.Models.Venta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar ventas</h1>
+
+<h4>Venta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VentaId" />
+            <div class="form-group">
+                <label asp-for="VehiculoId" class="control-label"></label>
+                <select asp-for="VehiculoId" class="form-control" asp-items="ViewBag.VehiculoId"></select>
+                <span asp-validation-for="VehiculoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalVentas" class="control-label"></label>
+                <input asp-for="TotalVentas" class="form-control" />
+                <span asp-validation-for="TotalVentas" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+            <div>
+                <a asp-action="Index">Regresar a la lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

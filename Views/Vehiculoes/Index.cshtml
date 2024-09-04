@@ -1,0 +1,54 @@
+﻿@model IEnumerable<parcial.Models.Vehiculo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Vehiculo</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Crear vehiculo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadPuertas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca.Nombre)  <!-- Cambiado a Nombre -->
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadPuertas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca.Nombre)  <!-- Cambiado a Nombre -->
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VehiculoId" class="btn btn-warning">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.VehiculoId" class="btn btn-info">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VehiculoId" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
